@@ -3,7 +3,7 @@
 """
 Created on Sat May 27 20:29:52 2023
 
-@author: glorto86b
+@author: Daedallu!
 """
 
 import pygame
@@ -25,10 +25,10 @@ Clock = pygame.time.Clock()
 fps = 60
 
 #defnindo sons:
-explosion_fx = pygame.mixer.Sound("/home/glorto86b/daqza_raiders/images/xplod2.mp3")
+explosion_fx = pygame.mixer.Sound("/home/glorto86b/py_games/daqza_raiders/images/xplod2.mp3")
 explosion_fx.set_volume(0.5)
 
-laser_fx = pygame.mixer.Sound("/home/glorto86b/daqza_raiders/images/shot.mp3")
+laser_fx = pygame.mixer.Sound("/home/glorto86b/py_games/daqza_raiders/images/shot.mp3")
 laser_fx.set_volume(0.5)
 
 #enemyFire_fx = pygame.mixer.Sound("/home/glorto86b/daqa_wars/images/enemyShot.mp3")
@@ -51,7 +51,7 @@ game_over = 0 #naõ é fim de jogo; 1 = jogador venceu; -1 = jogador perdeu
 
 
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("DAQZA RAID(version beta)","/home/glorto86b/daqza_raiders/images/shipp.bmp ")
+pygame.display.set_caption("DAQZA RAID(version beta)","/home/glorto86b/py_games/daqza_raiders/images/shipp.bmp ")
 
 font30 = pygame.font.SysFont('uroob', 30)
 font40 = pygame.font.SysFont('uroob', 40)
@@ -70,7 +70,7 @@ def draw_text(text, font, text_col, x, y):
     screen.blit(img,(x,y))
 
 
-bg = pygame.image.load("/home/glorto86b/daqza_raiders/images/bg2.png")
+bg = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/bg2.png")
 
 def draw_bg():
     #screen.blit((45, 0 , 55))
@@ -80,7 +80,7 @@ class Spaceship(pygame.sprite.Sprite):
     
     def __init__(self, x, y, health):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/ship.png")
+        self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/ship.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x,y]
         self.health_start = health
@@ -117,14 +117,14 @@ class Spaceship(pygame.sprite.Sprite):
            laser_fx.play()
 
         if key[pygame.K_DOWN] and key[pygame.K_x]:
-           self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/enemy" + str(random.randint(1,5)) + ".png")
+           self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/enemy" + str(random.randint(1,5)) + ".png")
         if key[pygame.K_UP] :
-           self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/ship.png")
+           self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/ship.png")
         if key[pygame.K_DOWN] and key[pygame.K_g] and key[pygame.K_h]:
-           self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/phantom_ghost.png")
+           self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/phantom_ghost.png")
            speed = 20
         if key[pygame.K_DOWN] and key[pygame.K_0] and key[pygame.K_n] and key[pygame.K_l]  :
-           self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/invisible.png")
+           self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/invisible.png")
            
            
            
@@ -150,15 +150,15 @@ class Spaceship(pygame.sprite.Sprite):
 class Bullets(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/Bullet.png")
+        self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/Bullet.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x,y]
     def update(self):
         self.rect.y -= 5
         if self.rect.bottom < 200:
-            self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/Bullet2.png")
+            self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/Bullet2.png")
         if self.rect.bottom < 400 and self.rect.bottom > 200:
-            self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/Bullet3.png")    
+            self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/Bullet3.png")    
         if self.rect.bottom < 100:
             self.kill()
         
@@ -177,7 +177,7 @@ class Bullets(pygame.sprite.Sprite):
 class Enemies(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load ("/home/glorto86b/daqza_raiders/images/enemy" + str(random.randint(1,5)) + ".png")
+        self.image = pygame.image.load ("/home/glorto86b/py_games/daqza_raiders/images/enemy" + str(random.randint(1,5)) + ".png")
         self.rect = self.image.get_rect()
         self.rect.center = [x,y]
         self.move_counter = 0
@@ -196,7 +196,7 @@ class Enemies(pygame.sprite.Sprite):
 class Enemy_Bullets(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("/home/glorto86b/daqza_raiders/images/enemyBullet.png")
+        self.image = pygame.image.load("/home/glorto86b/py_games/daqza_raiders/images/enemyBullet.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x,y]
     def update(self):
@@ -218,7 +218,7 @@ class Xplodit(pygame.sprite.Sprite):
             pygame.sprite.Sprite.__init__(self)
             self.images = []
             for num in range(1,5):
-                img = pygame.image.load(f"/home/glorto86b/daqza_raiders/images/xplod{num}.png")
+                img = pygame.image.load(f"/home/glorto86b/py_games/daqza_raiders/images/xplod{num}.png")
                 if size == 1:
                     img = pygame.transform.scale(img,(40, 40))
                 if size == 2:
